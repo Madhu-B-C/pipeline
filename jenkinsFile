@@ -32,7 +32,7 @@ stages {
 							[[ -d '/opt/jenkins/workspace/Build' ]] || sudo mkdir --parents '/opt/jenkins/workspace/Build'
 							cd /opt/jenkins/workspace/Build/
 							[[ -d "/opt/jenkins/workspace/Build/artifactory" ]] && sudo rm -rf /opt/jenkins/workspace/Build/artifactory 
-							sudo git clone git@github.com:Madhu-B-C/artifactory.git
+							sudo mkdir artifactory
 							cd artifactory
 							file=$(ls ABC_* | sort -n | tail -1)
 							if [[ -n "$file" ]]; then
