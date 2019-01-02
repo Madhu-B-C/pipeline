@@ -6,7 +6,7 @@ stages {
                 echo 'Building..'
 				sh '''
 						set +x
-						sudo -s
+						echo $USER
 						cd c_programs
 						echo -e "\n\n**************************** This is a Build JOB **************************** "
 
