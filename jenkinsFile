@@ -32,7 +32,7 @@ stages {
 							[[ -d '/opt/jenkins/workspace/Build' ]] || sudo mkdir --parents '/opt/jenkins/workspace/Build'
 							cd /opt/jenkins/workspace/Build/
 							[[ -d "/opt/jenkins/workspace/Build/artifactory" ]] && sudo rm -rf /opt/jenkins/workspace/Build/artifactory 
-							git clone git@github.com:Madhu-B-C/artifactory.git
+							sudo git clone git@github.com:Madhu-B-C/artifactory.git
 							cd artifactory
 							file=$(ls ABC_* | sort -n | tail -1)
 							if [[ -n "$file" ]]; then
@@ -46,12 +46,12 @@ stages {
 							
 							sudo cp "/opt/jenkins/workspace/Build/c_programs/ABC.exe" "/opt/jenkins/workspace/Build/artifactory/ABC_v${new_version}.exe"
 							
-							git config --global push.default simple
-							git config --global user.name "Jenkins"
-							git config --global user.email master.jenkins@build.com
-							git status
-							git add --all && git commit -m "Build ABC_${dt}.exe"
-							git push origin master
+							sudo git config --global push.default simple
+							sudo git config --global user.name "Jenkins"
+							sudo git config --global user.email master.jenkins@build.com
+							sudo git status
+							sudo git add --all && git commit -m "Build ABC_${dt}.exe"
+							sudo git push origin master
 							echo -e "\nSTEP 3:	Build pushed to artifactory"
 								
 						else
@@ -73,7 +73,7 @@ stages {
 					set +x
 
 					[[ -d "./artifactory" ]] && rm -rf ./artifactory 
-					git clone git@github.com:Madhu-B-C/artifactory.git
+					sudo git clone git@github.com:Madhu-B-C/artifactory.git
 					cd artifactory
 					file=$(ls ABC_* | sort -n | tail -1) 
 
@@ -103,7 +103,7 @@ stages {
 				set +x
 
 					[[ -d "./artifactory" ]] && rm -rf ./artifactory 
-					git clone git@github.com:Madhu-B-C/artifactory.git
+					sudo git clone git@github.com:Madhu-B-C/artifactory.git
 					cd artifactory
 					file=$(ls ABC_* | sort -n | tail -1)
 					
@@ -118,7 +118,7 @@ stages {
 					num2=$((1 + RANDOM % 1000))
 					
 						echo -e "\n-------------------------- TEST_CASE ($count) --------------------------"
-						./$file -v -i <<<"$fact $oe $num1 $num2"
+						sudo ./$file -v -i <<<"$fact $oe $num1 $num2"
 					
 					if [ $? -eq 0 ]; then
 						echo -e "\n      RESULT -> TEST_CASE (${count}): SUCCESS" 
