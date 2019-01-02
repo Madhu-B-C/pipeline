@@ -7,6 +7,7 @@ stages {
 				sh '''
 						set +x
 						echo $USER
+						hostname -i
 						cd c_programs
 						echo -e "\n\n**************************** This is a Build JOB **************************** "
 
